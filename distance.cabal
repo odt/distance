@@ -1,0 +1,52 @@
+cabal-version:       3.0
+name:                distance
+version:             0.1.0.0
+license: MIT
+author:              TANIGUCHI Kohei
+build-type:          Simple
+
+common warning
+  ghc-options:
+    -Wall
+    -Wcompat
+    -Widentities
+    -Wincomplete-record-updates
+    -Wincomplete-uni-patterns
+    -Wmissing-export-lists
+    -Wmissing-home-modules
+    -Wmissing-import-lists
+    -Wmissing-local-signatures
+    -Wmonomorphism-restriction
+    -Wpartial-fields
+    -Wredundant-constraints
+    -fdefer-typed-holes
+
+library
+  import: warning
+  hs-source-dirs: src
+  exposed-modules:
+    Csv
+    Distance
+  build-depends:
+      base
+    , split
+  default-language:    Haskell2010
+
+executable distance
+  import: warning
+  hs-source-dirs: app
+  main-is:             Main.hs
+  build-depends:
+      base
+    , distance
+  default-language:    Haskell2010
+
+test-suite doctest
+  import: warning
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  hs-source-dirs: test
+  build-depends:
+      base
+    , doctest
+  default-language: Haskell2010
