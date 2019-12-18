@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: haskell:8.8.1
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - libraries-{{ checksum "distance.cabal" }}
+            - libraries
+      - run: cabal update
+      - run: cabal test
+      - save_cache:
+          key: libraries-{{ checksum "distance.cabal" }}
+          paths:
+            - "~/.cabal"

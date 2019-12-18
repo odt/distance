@@ -1,5 +1,7 @@
 # 距離計算
 
+[![CircleCI](https://circleci.com/gh/odt/distance.svg?style=svg)](https://circleci.com/gh/odt/distance)
+
 始点の緯度経度、終点の緯度経度が並んだ CSV があります。
 
 ``` csv
