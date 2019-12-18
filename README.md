@@ -19,3 +19,5 @@
 こうなる。距離/メートルをつけ加えます。
 
 標準入力から読み込んで標準出力に書き出します。
+
+[GitHub Package Registry](https://github.com/odt/distance/packages) に Docker イメージがあります。

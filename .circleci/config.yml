@@ -1,6 +1,17 @@
-version: 2
+version: 2.1
+workflows:
+  version: 2
+  test-and-build-image:
+    jobs:
+      - test
+      - build-image:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
 jobs:
-  build:
+  test:
     docker:
       - image: haskell:8.8.1
     steps:
@@ -15,3 +26,10 @@ jobs:
           key: libraries-{{ checksum "distance.cabal" }}
           paths:
             - "~/.cabal"
+  build-image:
+    machine: true
+    steps:
+      - checkout
+      - run: echo $KSC_CI_PERSONAL_ACCESS_TOKEN | docker login docker.pkg.github.com --username ksc-ci --password-stdin
+      - run: docker build --tag docker.pkg.github.com/odt/distance/calculator:$CIRCLE_SHA1 .
+      - run: docker push docker.pkg.github.com/odt/distance/calculator:$CIRCLE_SHA1
