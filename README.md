@@ -1,7 +1,5 @@
 # 距離計算
 
-[![CircleCI](https://circleci.com/gh/odt/distance.svg?style=svg)](https://circleci.com/gh/odt/distance)
-
 始点の緯度経度、終点の緯度経度が並んだ CSV があります。
 
 ``` csv
@@ -20,4 +18,4 @@
 
 標準入力から読み込んで標準出力に書き出します。
 
-[GitHub Package Registry](https://github.com/odt/distance/packages) に Docker イメージがあります。
+Docker イメージが GitHub Packages に置かれている。
